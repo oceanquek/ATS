@@ -22,8 +22,21 @@ public class PlaneRepositoryImpl implements PlaneRepository {
     }
 
     @Override
-    public Plane getPlane() {
-        return null;
+    public Plane getPlane(int planeID) {
+        Plane plane = null;
+
+        Connection connection = util.MySQLConnectionUtil.getConnection("planes","root","mysql");
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM PLANE WHERE ID=%d",plane));
+            if (resultSet.next()) {
+                plane = new Plane(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4),resultSet.getString(5));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return plane;
     }
 
     @Override
