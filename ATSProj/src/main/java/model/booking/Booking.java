@@ -3,11 +3,11 @@ package model.booking;
 import java.sql.Date;
 
 public class Booking {
+	private int bookingId;
 	private String CustomerName;
-	private Date dateOfFlight;
+	private String dateOfFlight;
 	private String departure;
 	private String Destination;
-	private int bookingId;
 	private String seatNo;
 	private float CostofFlight;
 	
@@ -16,6 +16,20 @@ public class Booking {
 		
 	}
 	
+	
+	public Booking(int bookingId, String customerName, String dateOfFlight, String departure, String destination,
+			String seatNo, float costofFlight) {
+		super();
+		this.bookingId = bookingId;
+		CustomerName = customerName;
+		this.dateOfFlight = dateOfFlight;
+		this.departure = departure;
+		Destination = destination;
+		this.seatNo = seatNo;
+		CostofFlight = costofFlight;
+	}
+
+
 	public int getBookingId() {
 		return bookingId;
 	}
@@ -43,10 +57,10 @@ public class Booking {
 	public void setCostofFlight(float costofFlight) {
 		CostofFlight = costofFlight;
 	}
-	public Date getDateOfFlight() {
+	public String getDateOfFlight() {
 		return dateOfFlight;
 	}
-	public void setDateOfFlight(Date dateOfFlight) {
+	public void setDateOfFlight(String dateOfFlight) {
 		this.dateOfFlight = dateOfFlight;
 	}
 	public String getDeparture() {
