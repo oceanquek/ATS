@@ -1,16 +1,18 @@
-package ats.model;
+package model.booking;
 
-public class BookingImpl implements Booking {
-	private String dateOfFlight;
+import java.sql.Date;
+
+public class Booking {
+	private String CustomerName;
+	private Date dateOfFlight;
 	private String departure;
 	private String Destination;
 	private int bookingId;
 	private String seatNo;
-	private int Planeid;
 	private float CostofFlight;
 	
 	// Default constructor
-	public BookingImpl (){
+	public Booking (){
 		
 	}
 	
@@ -26,22 +28,25 @@ public class BookingImpl implements Booking {
 	public void setSeatNo(String seatNo) {
 		this.seatNo = seatNo;
 	}
-	public int getPlaneid() {
-		return Planeid;
+
+	public String getCustomerName() {
+		return CustomerName;
 	}
-	public void setPlaneid(int planeid) {
-		Planeid = planeid;
+
+	public void setCustomerName(String customerName) {
+		CustomerName = customerName;
 	}
+
 	public float getCostofFlight() {
 		return CostofFlight;
 	}
 	public void setCostofFlight(float costofFlight) {
 		CostofFlight = costofFlight;
 	}
-	public String getDateOfFlight() {
+	public Date getDateOfFlight() {
 		return dateOfFlight;
 	}
-	public void setDateOfFlight(String dateOfFlight) {
+	public void setDateOfFlight(Date dateOfFlight) {
 		this.dateOfFlight = dateOfFlight;
 	}
 	public String getDeparture() {
@@ -57,7 +62,11 @@ public class BookingImpl implements Booking {
 		Destination = destination;
 	}
 	
-	public Booking getBooking(){
-		return this;
+	@Override
+	public String toString() {
+		String productString = "\nBooking Id : " + getBookingId() +
+				"\tCustomer name : \t" + getCustomerName() + "\t" +
+				"Price : " + getCostofFlight()+"\n";
+		return productString;
 	}
 }
