@@ -8,6 +8,14 @@ public class Country {
 
     public Country() {
     }
+    public Country(int countryID) {
+        CountryID=countryID;
+    }
+    public Country(String countryName, String countryCity, String countryState) {
+        CountryName = countryName;
+        CountryCity = countryCity;
+        CountryState = countryState;
+    }
 
     public Country(int countryID, String countryName, String countryCity, String countryState) {
         CountryID = countryID;
@@ -46,5 +54,15 @@ public class Country {
 
     public void setCountryState(String countryState) {
         CountryState = countryState;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "CountryID=" + CountryID +
+                ", CountryName='" + CountryName + '\'' +
+                ", CountryCity='" + CountryCity + '\'' +
+                ", CountryState='" + CountryState + '\'' +
+                '}';
     }
 }
