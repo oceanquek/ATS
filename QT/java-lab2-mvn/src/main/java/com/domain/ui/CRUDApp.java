@@ -66,12 +66,12 @@ public class CRUDApp {
 
     public static void main(String[] args) {
         //deleteProducts();
-        getProducts();
+        //getProducts();
         //updateProducts();
         //getProducts();
         //insertProduct();
 
-        insertArrayListToFile();
+        //insertArrayListToFile();
         //getArrayListFromFile();
         //updateArrayListToFile();
 

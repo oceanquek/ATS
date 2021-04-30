@@ -1,6 +1,5 @@
 package com.domain.repository;
 
-import com.domain.exception.ProductNotAvailableException;
 import com.domain.model.Product;
 import com.domain.repository.util.MySQLConnection;
 
@@ -29,34 +28,22 @@ public class ProductRepositoryImpl implements ProductRepository {
         return productName;
     }
 
-    public Product getProductObject() {
+    public Product getProductObject(int productID) {
 
-        //Product meaningProduct = null;
-        //Product meaningProduct = new Product();
-        Product meaningProduct = new Product(1,"Man's search for Meaning",50.5f);
-        try {
-        //meaningProduct.setProductId(1);
-        //meaningProduct.setProductName("Man's search for Meaning");
-        //meaningProduct.setPrice(50.50f);
-        } catch (NullPointerException nullPointerException) {
-            System.out.println("Secret Log : " + nullPointerException);
-            System.out.println("Hi <<Person>>, please try after some time!");
-        }
+        Product product = null;
 
-//		return meaningProduct;
-        // consider the product is not available
-        // instantiate the user defined exception
+        Connection connection = MySQLConnection.getConnection();
         try {
-            if (meaningProduct == null) {
-                ProductNotAvailableException productNotAvailableException = new ProductNotAvailableException();
-                throw productNotAvailableException;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM PRODUCTS WHERE ID=%d",productID));
+            if (resultSet.next()) {
+                product = new Product(resultSet.getInt(1),resultSet.getString(2),resultSet.getFloat("price"));
             }
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
 
-        catch (ProductNotAvailableException productNotAvailableException) {
-            System.out.println("Sorry, the product you are looking for is not avaibable..");
-        }
-        return null;
+        return product;
     }
 
     public ArrayList<Product> getProducts() {
