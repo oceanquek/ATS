@@ -1,6 +1,5 @@
 package repository.airport;
 
-import model.airports.Airport;
 import model.airports.Country;
 import util.MySQLConnectionUtil;
 
@@ -19,9 +18,9 @@ public class CountryRepositoryImpl implements CountryRepository{
         return MySQLConnectionUtil.getConnection(DB_NAME, USER_NAME, PASSWORD);
     }
     @Override
-    public Country getCountry() {
+    public Country getCountry(Country country) {
         Connection connection = iniConnection();
-        Country country = new Country();
+        Country result = null;
         try {
             String query = "SELECT * FROM COUNTRY WHERE COUNTRY_ID=?;";
 
@@ -31,10 +30,11 @@ public class CountryRepositoryImpl implements CountryRepository{
             // execute the preparedstatement
             ResultSet resultSet = preparedStmt.executeQuery();
             while (resultSet.next()) {
-                country.setCountryID(resultSet.getInt(1));
-                country.setCountryName(resultSet.getString(2));
-                country.setCountryCity(resultSet.getString(3));
-                country.setCountryState(resultSet.getString(4));
+                result = new Country();
+                result.setCountryID(resultSet.getInt(1));
+                result.setCountryName(resultSet.getString(2));
+                result.setCountryCity(resultSet.getString(3));
+                result.setCountryState(resultSet.getString(4));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -45,7 +45,7 @@ public class CountryRepositoryImpl implements CountryRepository{
                 throwables.printStackTrace();
             }
         }
-        return country;
+        return result;
     }
 
     @Override
@@ -141,6 +141,7 @@ public class CountryRepositoryImpl implements CountryRepository{
             preparedStmt.setString(1, country.getCountryName());
             preparedStmt.setString(2, country.getCountryCity());
             preparedStmt.setString(3, country.getCountryState());
+            preparedStmt.setInt(4, country.getCountryID());
             // execute the preparedstatement
             noOfRowsUpdated = preparedStmt.executeUpdate();
         } catch (SQLException throwables) {

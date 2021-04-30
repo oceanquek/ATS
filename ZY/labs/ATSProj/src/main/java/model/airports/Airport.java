@@ -8,6 +8,16 @@ public class Airport {
     public Airport() {
     }
 
+    public Airport(int airportID) {
+        AirportID = airportID;
+    }
+
+    public Airport(String airportCode, String airportName, int countryID) {
+        AirportCode = airportCode;
+        AirportName = airportName;
+        CountryID = countryID;
+    }
+
     public Airport(int airportID, String airportCode, String airportName, int countryID) {
         AirportID = airportID;
         AirportCode = airportCode;
@@ -45,5 +55,16 @@ public class Airport {
 
     public void setCountryID(int countryID) {
         CountryID = countryID;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Airport{" +
+                "AirportID=" + AirportID +
+                ", AirportCode='" + AirportCode + '\'' +
+                ", AirportName='" + AirportName + '\'' +
+                ", CountryID=" + CountryID +
+                '}';
     }
 }

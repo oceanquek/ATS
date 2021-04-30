@@ -9,31 +9,32 @@ import repository.airport.CountryRepositoryImpl;
 
 import java.util.ArrayList;
 
-public class App {
+public class AirportApp {
     public static void main(String[] args) {
         System.out.println("Welcome to ATS!");
 
-//        Country countryDallas=new Country("United States","Dallas","TX");
-//        Country countryAtlanta=new Country("United States","Atlanta","ATL");
+        Country countryDallas=new Country("United States","Dallas","TX");
+        Country countryAtlanta=new Country("United States","Atlanta","ATL");
 
-//        insertCountry(countryAtlanta);
-//        insertCountry(countryDallas);
-//        getCountryList();
-//        getCountry(new Country(2));
-//        updateCountry(new Country(1,"Singapore","Singapore","SG"));
-//        deleteCountry(new Country(3));
+        insertCountry(countryAtlanta);
+        insertCountry(countryDallas);
+        getCountryList();
+        getCountry(new Country(2));
+        updateCountry(new Country(1,"Singapore","Singapore","SG"));
+        deleteCountry(new Country(3));
 
-//        Airport airportSG=new Airport("SGC","Changi",1);
-//        Airport airportChicago=new Airport("ORD","O'Hare International Airport",5);
-//        Airport airportDallas=new Airport("DFW","Dallas/Fort Worth International Airport",8);
-//
-//        insertAirport(airportSG);
-//        insertAirport(airportChicago);
-//        insertAirport(airportDallas);
-//        getAirportList();
-//        getAirport(new Airport(1));
-//        updateAirport(new Airport(1,"SG_C","Changi Airport",1));
-//        deleteAirport(new Airport(3));
+
+        Airport airportSG=new Airport("SGC","Changi",1);
+        Airport airportChicago=new Airport("ORD","O'Hare International Airport",5);
+        Airport airportDallas=new Airport("DFW","Dallas/Fort Worth International Airport",8);
+
+        insertAirport(airportSG);
+        insertAirport(airportChicago);
+        insertAirport(airportDallas);
+        getAirportList();
+        getAirport(new Airport(1));
+        updateAirport(new Airport(1,"SG_C","Changi Airport",1));
+        deleteAirport(new Airport(3));
     }
 
     private static void getAirport(Airport airport) {

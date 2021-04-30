@@ -6,7 +6,7 @@ import model.airports.Country;
 import java.util.ArrayList;
 
 public interface CountryRepository {
-    Country getCountry();
+    Country getCountry(Country country);
 
     ArrayList<Country> getCountryList();
 

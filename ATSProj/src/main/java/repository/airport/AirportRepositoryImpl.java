@@ -20,9 +20,9 @@ public class AirportRepositoryImpl implements AirportRepository {
     }
 
     @Override
-    public Airport getAirport() {
+    public Airport getAirport(Airport airport) {
         Connection connection = iniConnection();
-        Airport airport = new Airport();
+        Airport result = null;
         try {
             String query = "SELECT * FROM AIRPORT WHERE AIRPORT_ID=?;";
 
@@ -32,10 +32,11 @@ public class AirportRepositoryImpl implements AirportRepository {
             // execute the preparedstatement
             ResultSet resultSet = preparedStmt.executeQuery();
             while (resultSet.next()) {
-                airport.setAirportID(resultSet.getInt(1));
-                airport.setAirportCode(resultSet.getString(2));
-                airport.setAirportName(resultSet.getString(3));
-                airport.setCountryID(resultSet.getInt(4));
+                result = new Airport();
+                result.setAirportID(resultSet.getInt(1));
+                result.setAirportCode(resultSet.getString(2));
+                result.setAirportName(resultSet.getString(3));
+                result.setCountryID(resultSet.getInt(4));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -46,7 +47,7 @@ public class AirportRepositoryImpl implements AirportRepository {
                 throwables.printStackTrace();
             }
         }
-        return airport;
+        return result;
     }
 
     @Override
@@ -142,6 +143,7 @@ public class AirportRepositoryImpl implements AirportRepository {
             preparedStmt.setString(1, airport.getAirportCode());
             preparedStmt.setString(2, airport.getAirportName());
             preparedStmt.setInt(3, airport.getCountryID());
+            preparedStmt.setInt(4, airport.getAirportID());
             // execute the preparedstatement
             noOfRowsUpdated = preparedStmt.executeUpdate();
         } catch (SQLException throwables) {

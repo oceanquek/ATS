@@ -14,8 +14,8 @@ public class CountryServiceImpl implements CountryService{
     }
 
     @Override
-    public Country getCountry() {
-        return countryRepository.getCountry();
+    public Country getCountry(Country country) {
+        return countryRepository.getCountry(country);
     }
 
     @Override

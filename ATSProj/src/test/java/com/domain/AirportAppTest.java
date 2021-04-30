@@ -1,52 +1,69 @@
-package ats.ui;
+package com.domain;
 
 import model.airports.Airport;
 import model.airports.Country;
+import org.junit.jupiter.api.Test;
 import repository.airport.AirportRepository;
 import repository.airport.AirportRepositoryImpl;
 import repository.airport.CountryRepository;
 import repository.airport.CountryRepositoryImpl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 
-public class App {
-    public static void main(String[] args) {
-        System.out.println("Welcome to ATS!");
+public class AirportAppTest {
+    @Test
+    private void testAirport() {
+        Airport airportDallas=new Airport("DFW","Dallas/Fort Worth International Airport",8);
+        insertAirport(airportDallas);
 
-//        Country countryDallas=new Country("United States","Dallas","TX");
-//        Country countryAtlanta=new Country("United States","Atlanta","ATL");
+        assertNotNull(getAirportList().stream().filter(airport ->
+                airport.getCountryID()==(airportDallas.getCountryID()) &&
+                        airport.getAirportCode().equals(airportDallas.getAirportCode()) &&
+                        airport.getAirportName().equals(airportDallas.getAirportName())
+        ).findAny().orElse(null));
 
-//        insertCountry(countryAtlanta);
-//        insertCountry(countryDallas);
-//        getCountryList();
-//        getCountry(new Country(2));
-//        updateCountry(new Country(1,"Singapore","Singapore","SG"));
-//        deleteCountry(new Country(3));
+        assertTrue(getAirportList().size()>0);
+        assertNotNull(getAirport(new Airport(1)));
 
-//        Airport airportSG=new Airport("SGC","Changi",1);
-//        Airport airportChicago=new Airport("ORD","O'Hare International Airport",5);
-//        Airport airportDallas=new Airport("DFW","Dallas/Fort Worth International Airport",8);
-//
-//        insertAirport(airportSG);
-//        insertAirport(airportChicago);
-//        insertAirport(airportDallas);
-//        getAirportList();
-//        getAirport(new Airport(1));
-//        updateAirport(new Airport(1,"SG_C","Changi Airport",1));
-//        deleteAirport(new Airport(3));
+        updateAirport(new Airport(1,"SG_C","Changi Airport",1));
+        assertEquals("SG_C",getAirport(new Airport(1)).getAirportCode());
+
+        deleteAirport(new Airport(9));
+        assertNull(getCountry(new Country(9)));
     }
 
-    private static void getAirport(Airport airport) {
+    @Test
+    private void testCountry() {
+        Country countryDallas = new Country("United States", "Dallas", "TX");
+
+        insertCountry(countryDallas);
+        assertNotNull(getCountryList().stream().filter(country ->
+                country.getCountryName().equals(countryDallas.getCountryName()) &&
+                        country.getCountryCity().equals(countryDallas.getCountryCity()) &&
+                        country.getCountryState().equals(countryDallas.getCountryState())
+        ).findAny().orElse(null));
+
+        assertTrue(getCountryList().size()>0);
+        assertNotNull(getCountry(new Country(2)));
+        updateCountry(new Country(1, "Singapore", "Singapore", "SG"));
+        assertEquals("SG",getCountry(new Country(1)).getCountryState());
+
+        deleteCountry(new Country(3));
+        assertNull(getCountry(new Country(3)));
+    }
+
+    private static Airport getAirport(Airport airport) {
         AirportRepository airportRepository = new AirportRepositoryImpl();
         Airport result = airportRepository.getAirport(airport);
-        System.out.println(result);
-
+        return result;
     }
 
-    private static void getAirportList() {
+    private static ArrayList<Airport> getAirportList() {
         AirportRepository airportRepository = new AirportRepositoryImpl();
         ArrayList<Airport> airportArrayList = airportRepository.getAirportList();
-        System.out.println(airportArrayList);
+       return airportArrayList;
     }
 
     private static void insertAirport(Airport airport) {
@@ -81,19 +98,17 @@ public class App {
         }
     }
 
-
-
-    private static void getCountry(Country country) {
+    private Country getCountry(Country country) {
         CountryRepository countryRepository = new CountryRepositoryImpl();
         Country result = countryRepository.getCountry(country);
-        System.out.println(result);
+        return result;
 
     }
 
-    private static void getCountryList() {
+    private ArrayList<Country> getCountryList() {
         CountryRepository countryRepository = new CountryRepositoryImpl();
         ArrayList<Country> countryArrayList = countryRepository.getCountryList();
-        System.out.println(countryArrayList);
+        return countryArrayList;
     }
 
     private static void insertCountry(Country country) {
@@ -128,4 +143,5 @@ public class App {
 
         }
     }
+
 }
