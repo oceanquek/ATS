@@ -6,11 +6,12 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ProductFileRepositoryImpl implements ProductFileRepository {
-
+    @Override
     public ArrayList<Product> getProducts() {
         return null;
     }
 
+    @Override
     public int insertProduct(Product product) {
         int objectSaved = 0;
         File productFile = new File("product.dat");
@@ -29,6 +30,7 @@ public class ProductFileRepositoryImpl implements ProductFileRepository {
         }
     }
 
+    @Override
     public int insertArrayListToFile(ArrayList products) {
         int objectSaved = 0;
         File productFile = new File("productsList.dat");
@@ -47,6 +49,7 @@ public class ProductFileRepositoryImpl implements ProductFileRepository {
         }
     }
 
+    @Override
     public ArrayList<Product> getArrayListFromFile() {
         ArrayList<Product> products = null;
         File productFile = new File("productsList.dat");
@@ -62,6 +65,7 @@ public class ProductFileRepositoryImpl implements ProductFileRepository {
 
     }
 
+    @Override
     public int updateArrayListToFile(Product product) {
         int objectSaved = 0;
         File productFile = new File("productsList.dat");
@@ -82,6 +86,7 @@ public class ProductFileRepositoryImpl implements ProductFileRepository {
         }
     }
 
+    @Override
     public int deleteProductFromFile(int index) {
         int objectSaved = 0;
         File productFile = new File("productsList.dat");
@@ -102,6 +107,7 @@ public class ProductFileRepositoryImpl implements ProductFileRepository {
         }
     }
 
+    @Override
     public Product getProduct() {
         Product product = null;
         File productFile = new File("product.dat");

@@ -1,6 +1,5 @@
 package com.domain.repository;
 
-import com.domain.exception.ProductNotAvailableException;
 import com.domain.model.Product;
 import com.domain.repository.util.MySQLConnection;
 
@@ -18,8 +17,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     //  constructor without parameter is a default constructor
     // called automatically with new keyword
     public ProductRepositoryImpl() {
-        System.out.println("ProductRepositoryImpl instantiated ....");
-        productName = "Fullstack Development";
+
     }
 
     public String log() {
@@ -29,46 +27,35 @@ public class ProductRepositoryImpl implements ProductRepository {
         return productName;
     }
 
-    public Product getProductObject() {
+    public Product getProductObject(int productID) {
 
-        //Product meaningProduct = null;
-        //Product meaningProduct = new Product();
-        Product meaningProduct = new Product(1,"Man's search for Meaning",50.5f);
-        try {
-        //meaningProduct.setProductId(1);
-        //meaningProduct.setProductName("Man's search for Meaning");
-        //meaningProduct.setPrice(50.50f);
-        } catch (NullPointerException nullPointerException) {
-            System.out.println("Secret Log : " + nullPointerException);
-            System.out.println("Hi <<Person>>, please try after some time!");
-        }
+        Product product = null;
 
-//		return meaningProduct;
-        // consider the product is not available
-        // instantiate the user defined exception
+        Connection connection = MySQLConnection.getConnection();
         try {
-            if (meaningProduct == null) {
-                ProductNotAvailableException productNotAvailableException = new ProductNotAvailableException();
-                throw productNotAvailableException;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM PRODUCTS WHERE PRODUCT_ID=%d",productID));
+            if (resultSet.next()) {
+                product = new Product(resultSet.getInt(1),resultSet.getString(2),resultSet.getFloat("price"));
             }
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
 
-        catch (ProductNotAvailableException productNotAvailableException) {
-            System.out.println("Sorry, the product you are looking for is not avaibable..");
-        }
-        return null;
+        return product;
     }
 
     public ArrayList<Product> getProducts() {
-        ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<Product> products = new ArrayList<>();
         Product product = new Product(1,"Hello World",50.0f);
         products.add(product);
         return products;
     }
 
+    @Override
     public ArrayList getProductsFromDB() {
         Connection connection = MySQLConnection.getConnection();
-        ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<Product> products = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM PRODUCTS");
@@ -81,6 +68,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         return products;
     }
 
+    @Override
     public boolean insertProductsIntoDB(Product product) {
         int rows = 0;
         Connection connection = MySQLConnection.getConnection();
@@ -96,6 +84,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         return false;
     }
 
+    @Override
     public boolean updateProductsIntoDB(Product product) {
         int rows = 0;
         Connection connection = MySQLConnection.getConnection();
@@ -112,6 +101,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         return false;
     }
 
+    @Override
     public boolean deleteProductsIntoDB(int productId) {
         int rows = 0;
         Connection connection = MySQLConnection.getConnection();

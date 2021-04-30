@@ -66,18 +66,18 @@ public class CRUDApp {
 
     public static void main(String[] args) {
         //deleteProducts();
-        getProducts();
+        //getProducts();
         //updateProducts();
         //getProducts();
         //insertProduct();
 
-        insertArrayListToFile();
-        getArrayListFromFile();
+        //insertArrayListToFile();
+        //getArrayListFromFile();
         //updateArrayListToFile();
 
-        //getArrayListFromFile();
-        //updateArrayListToFile();
-        //getArrayListFromFile();
+        getArrayListFromFile();
+        updateArrayListToFile();
+        getArrayListFromFile();
     }
 
     private static void deleteProductFromArrayList() {
