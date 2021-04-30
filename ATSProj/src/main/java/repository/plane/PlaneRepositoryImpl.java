@@ -1,6 +1,6 @@
-package java.repository.plane;
+package repository.plane;
 
-import java.model.planes.Plane;
+import model.planes.Plane;
 import java.sql.*;
 import java.util.ArrayList;
 

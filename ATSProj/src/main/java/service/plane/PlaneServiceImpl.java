@@ -1,8 +1,8 @@
-package java.service.plane;
+package service.plane;
 
-import java.model.planes.Plane;
-import java.repository.plane.PlaneRepository;
-import java.repository.plane.PlaneRepositoryImpl;
+import model.planes.Plane;
+import repository.plane.PlaneRepository;
+import repository.plane.PlaneRepositoryImpl;
 import java.util.ArrayList;
 
 public class PlaneServiceImpl implements PlaneService {

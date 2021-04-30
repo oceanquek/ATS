@@ -1,6 +1,6 @@
-package java.service.plane;
+package service.plane;
 
-import java.model.planes.Plane;
+import model.planes.Plane;
 import java.util.ArrayList;
 
 public interface PlaneService {

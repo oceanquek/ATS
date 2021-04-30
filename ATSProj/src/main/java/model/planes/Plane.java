@@ -1,4 +1,4 @@
-package java.model.planes;
+package model.planes;
 
 public class Plane {
     private int id;
