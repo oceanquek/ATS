@@ -81,28 +81,34 @@ public int insertBookingPreparedStatement(Booking Booking){
 	
 	public int UpdateBookingPreparedStatement(Booking Booking){
 		
-		int noOfRowsInserted =0;
+		int noOfRowsUpdated =0;
 			try {
 				 Connection connection = MySQLConnectionUtil.getConnection();
 				 // statement for executing a query
-				 PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Booking SET CUSTOMER_NAME =? WHERE Booking_ID =?");
+				 PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Booking SET CUSTOMER_NAME =? , "
+				 		+ "BOOKING_DATE =? , DEPARTURE=?, DESTINATION=?, SEAT_NO=?,COST=? WHERE Booking_ID =?");
 				 
 				 preparedStatement.setString(1, Booking.getCustomerName());
-				 preparedStatement.setInt(2, Booking.getBookingId());
+				 preparedStatement.setString(2, Booking.getDateOfFlight());
+				 preparedStatement.setString(3, Booking.getDeparture());
+				 preparedStatement.setString(4, Booking.getDestination());
+				 preparedStatement.setString(5, Booking.getSeatNo());
+				 preparedStatement.setFloat(6, Booking.getCostofFlight());
+				 preparedStatement.setInt(7, Booking.getBookingId());
 					 //statement.executeQuery
-					noOfRowsInserted = preparedStatement.executeUpdate();
+					noOfRowsUpdated = preparedStatement.executeUpdate();
 				
 				 } catch (ClassNotFoundException | SQLException exception) {
 				 // TODO Auto-generated catch block
 				 System.out.println(exception);
 				 }
-			return noOfRowsInserted;
+			return noOfRowsUpdated;
 		}
 	
 	
 public int DeleteBookingPreparedStatement(int BookingId){
 		
-		int noOfRowsInserted =0;
+		int noOfRowsDeleted =0;
 			try {
 				 Connection connection = MySQLConnectionUtil.getConnection();
 				 // statement for executing a query
@@ -110,12 +116,12 @@ public int DeleteBookingPreparedStatement(int BookingId){
 				 
 				 preparedStatement.setInt(1, BookingId);
 					 //statement.executeQuery
-					noOfRowsInserted = preparedStatement.executeUpdate();
+					noOfRowsDeleted = preparedStatement.executeUpdate();
 				
 				 } catch (ClassNotFoundException | SQLException exception) {
 				 // TODO Auto-generated catch block
 				 System.out.println(exception);
 				 }
-			return noOfRowsInserted;
+			return noOfRowsDeleted;
 		}
 }
