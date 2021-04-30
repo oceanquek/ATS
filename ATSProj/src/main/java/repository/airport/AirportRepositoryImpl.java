@@ -22,7 +22,7 @@ public class AirportRepositoryImpl implements AirportRepository {
     @Override
     public Airport getAirport(Airport airport) {
         Connection connection = iniConnection();
-        Airport result = new Airport();
+        Airport result = null;
         try {
             String query = "SELECT * FROM AIRPORT WHERE AIRPORT_ID=?;";
 
@@ -32,6 +32,7 @@ public class AirportRepositoryImpl implements AirportRepository {
             // execute the preparedstatement
             ResultSet resultSet = preparedStmt.executeQuery();
             while (resultSet.next()) {
+                result = new Airport();
                 result.setAirportID(resultSet.getInt(1));
                 result.setAirportCode(resultSet.getString(2));
                 result.setAirportName(resultSet.getString(3));
