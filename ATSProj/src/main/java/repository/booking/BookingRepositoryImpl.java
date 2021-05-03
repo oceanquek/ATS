@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import exception.BookingNotAvailableException;
 import model.booking.Booking;
-import util.MySQLConnectionUtil;
+import util.*;
 
 public class BookingRepositoryImpl implements BookingRepository {
 	// functionality related to repository handling
@@ -27,7 +27,49 @@ public class BookingRepositoryImpl implements BookingRepository {
 	public String log(){
 		return "cnv message";
 	}
+	
+	public Booking getBookingByCustomerName(String name) {
+		Booking booking = null;
+		try {
+			 Connection connection = MySQLConnectionUtil.getConnection();
+			 // statement for executing a query
+			 Statement statement = connection.createStatement();
+			 //get the results
+			 ResultSet resultSet = statement.executeQuery("Select * FROM Booking WHERE CUSTOMER_NAME = "+ "'" +name + "'");
+			 while(resultSet.next()) {
+				booking = new Booking(resultSet.getInt(1), resultSet.getString(2),resultSet.getString(3),
+						 resultSet.getString(4),resultSet.getString(5),resultSet.getString(6), resultSet.getFloat("COST"));
+			 }
+			 } catch (ClassNotFoundException | SQLException exception) {
+			 // TODO Auto-generated catch block
+			 System.out.println(exception);
+			 }
+		 
+		
+		return booking;
+	}
 
+	public Booking getBookingByBookingId(int bookingId) {
+		
+		Booking booking = null;
+			try {
+				 Connection connection = MySQLConnectionUtil.getConnection();
+				 // statement for executing a query
+				 Statement statement = connection.createStatement();
+				 //get the results
+				 ResultSet resultSet = statement.executeQuery("Select * FROM Booking WHERE BOOKING_ID ="+bookingId);
+				 while(resultSet.next()) {
+					booking = new Booking(resultSet.getInt(1), resultSet.getString(2),resultSet.getString(3),
+							 resultSet.getString(4),resultSet.getString(5),resultSet.getString(6), resultSet.getFloat("COST"));
+				 }
+				 } catch (ClassNotFoundException | SQLException exception) {
+				 // TODO Auto-generated catch block
+				 System.out.println(exception);
+				 }
+			 
+			
+			return booking;
+	}
 
 	public ArrayList<Booking> getBookings() {
 		

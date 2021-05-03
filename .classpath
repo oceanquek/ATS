@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="ATSProj/src/main/java"/>
+	<classpathentry kind="src" path="ATSProj/src/test/java"/>
+	<classpathentry kind="src" path="QT/java-lab1/src"/>
+	<classpathentry kind="src" path="QT/java-lab2-mvn/src/main/java"/>
+	<classpathentry kind="src" path="QT/java-lab4-mvn/src/main/java"/>
+	<classpathentry kind="src" path="QT/java-lab4-mvn/src/test/java/com"/>
+	<classpathentry kind="src" path="ZY/labs/ATSProj/src/main/java"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.23.jar"/>
+	<classpathentry kind="output" path="ATSProj/target/classes"/>
+</classpath>
