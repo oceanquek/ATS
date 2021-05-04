@@ -17,6 +17,22 @@ CREATE TABLE BOOKING
     SEAT_NO VARCHAR(15),
     COST FLOAT(10,2)
 );
+INSERT INTO `ECOMZ`.`bookings`
+(`booking_id`,
+`costof_flight`,
+`customer_name`,
+`date_of_flight`,
+`departure`,
+`destination`,
+`seat_no`)
+VALUES
+(1,
+200,
+'mr tan',
+'12-12-2020',
+'Japan',
+'Singapore',
+'e7');
 
 
 INSERT INTO BOOKING (BOOKING_ID,CUSTOMER_NAME,BOOKING_DATE,DEPARTURE,DESTINATION,SEAT_NO,COST)
