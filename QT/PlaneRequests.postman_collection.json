@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "314ac809-77a2-4ebe-a01f-a1368feaa391",
+		"name": "PlaneRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/app/api/planes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"planeMaker\":\"Airbus\",\"planeModel\":\"A350-900\",\"planeCapacity\":200,\"planeRegNo\":\"9SV-AAD\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/app/api/planes"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/app/api/planes/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"planeMaker\":\"Airbus\",\"planeModel\":\"A350-900\",\"planeCapacity\":200,\"planeRegNo\":\"9SV-AAD\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/app/api/planes/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/app/api/planes/1 Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"planeMaker\":\"Airbus\",\"planeModel\":\"A350-900\",\"planeCapacity\":200,\"planeRegNo\":\"9SV-AAD\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/app/api/planes/1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/app/api/planes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"planeMaker\":\"Airbus\",\"planeModel\":\"A350-900\",\"planeCapacity\":200,\"planeRegNo\":\"9SV-AAD\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/app/api/planes"
+			},
+			"response": []
+		}
+	]
+}
