@@ -5,11 +5,13 @@ import model.airports.Country;
 import java.util.ArrayList;
 
 public interface CountryService {
-    Country getCountry(Country country);
+    Country getCountryByID(Country country);
+    Country getCountryByName(Country country);
 
     ArrayList<Country> getCountryList();
 
     int insertCountry(Country country);
+
 
     int deleteCountry(Country country);
 

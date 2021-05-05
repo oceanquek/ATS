@@ -14,9 +14,16 @@ public class AirportServiceImpl implements AirportService {
         airportRepository=new AirportRepositoryImpl();
     }
 
+
+
     @Override
-    public Airport getAirport(Airport airport) {
-        return airportRepository.getAirport(airport);
+    public Airport getAirportByID(Airport airport) {
+        return airportRepository.getAirportByID(airport);
+    }
+
+    @Override
+    public Airport getAirportByCode(Airport airport) {
+        return airportRepository.getAirportByCode(airport);
     }
 
     @Override

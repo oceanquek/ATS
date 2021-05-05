@@ -19,9 +19,9 @@ public class CountryRepositoryImpl implements CountryRepository{
         return MySQLConnectionUtil.getConnection(DB_NAME, USER_NAME, PASSWORD);
     }
     @Override
-    public Country getCountry(Country country) {
+    public Country getCountryByID(Country country) {
         Connection connection = iniConnection();
-        Country result = new Country();
+        Country result = null;
         try {
             String query = "SELECT * FROM COUNTRY WHERE COUNTRY_ID=?;";
 
@@ -31,6 +31,38 @@ public class CountryRepositoryImpl implements CountryRepository{
             // execute the preparedstatement
             ResultSet resultSet = preparedStmt.executeQuery();
             while (resultSet.next()) {
+                result = new Country();
+                result.setCountryID(resultSet.getInt(1));
+                result.setCountryName(resultSet.getString(2));
+                result.setCountryCity(resultSet.getString(3));
+                result.setCountryState(resultSet.getString(4));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public Country getCountryByName(Country country) {
+        Connection connection = iniConnection();
+        Country result = null;
+        try {
+            String query = "SELECT * FROM COUNTRY WHERE COUNTRY_NAME=?;";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString(1, country.getCountryName());
+            // execute the preparedstatement
+            ResultSet resultSet = preparedStmt.executeQuery();
+            while (resultSet.next()) {
+                result = new Country();
                 result.setCountryID(resultSet.getInt(1));
                 result.setCountryName(resultSet.getString(2));
                 result.setCountryCity(resultSet.getString(3));
