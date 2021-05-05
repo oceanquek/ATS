@@ -1,6 +1,5 @@
 package com.domain.controller;
 
-import com.domain.entity.Plane;
 import com.domain.repository.PlaneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
