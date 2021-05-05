@@ -16,9 +16,9 @@ public class Flight {
     @Column(name = "DEST_AIRPORT")
     private String destAirport;
     @Column(name = "DEPART_AIRPORT")
-    private String = departAirport;
+    private String departAirport;
     @Column(name = "CAPACITY")
-    private int = capacity;
+    private int capacity;
 
     public Flight(){
     }
