@@ -20,7 +20,7 @@ public class PlaneController {
         return planesList;
     }
 
-    @GetMapping("/planes/{plantID}")
+    @GetMapping("/planes/{id}")
     public Plane findPlaneById(@PathVariable(value="id") long planeId) {
         Optional<Plane> optionalPlane = planeRepository.findById(planeId);
         Plane plane = optionalPlane.get();
