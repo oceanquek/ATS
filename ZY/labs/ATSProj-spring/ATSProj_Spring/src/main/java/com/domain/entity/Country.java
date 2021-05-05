@@ -4,19 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "COUNTRY")
+@Table(name = "COUNTRY_V2")
 public class Country {
     @Id
     @Column(name = "COUNTRY_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int countryID;
     @Column(name = "COUNTRY_NAME")
     private String countryName;
@@ -25,6 +24,8 @@ public class Country {
     @Column(name = "STATE")
     private String countryState;
 
+    @OneToMany(mappedBy="country")
+    private Set<Airport> airportSet;
 
     public Country(int countryID) {
         this.countryID =countryID;

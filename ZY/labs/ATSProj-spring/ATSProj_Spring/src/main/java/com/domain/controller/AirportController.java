@@ -28,11 +28,11 @@ public class AirportController {
         return airport;
     }
 
-//    @GetMapping("/airports")
-//    public Airport findByairportCode(@RequestParam(name = "code") String code) {
-//        Airport optionalAirport = airportRepository.findAirportByCode(code);
-//        return optionalAirport;
-//    }
+    @GetMapping("/airports/findByCode")
+    public Airport findByAirportCode(@RequestParam(name = "code") String code) {
+        Airport optionalAirport = airportRepository.findByCode(code);
+        return optionalAirport;
+    }
 
     @PostMapping("/airports")
     public Airport createAirport(@RequestBody Airport airport) {
@@ -48,7 +48,7 @@ public class AirportController {
         Airport airportFromDB = optionalAirport.get();
         airportFromDB.setAirportCode(airport.getAirportCode());
         airportFromDB.setAirportName(airport.getAirportName());
-        airportFromDB.setCountryID(airport.getCountryID());
+        airportFromDB.setCountry(airport.getCountry());
 
         Airport airportReturned = airportRepository.save(airportFromDB);
 
