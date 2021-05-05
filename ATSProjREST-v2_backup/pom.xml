@@ -12,18 +12,10 @@
 	<artifactId>ATSProjREST-v2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ATSProjREST-v2</name>
-	<description>ATS</description>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-
-
-<!--	<dependency>-->
-<!--		<groupId>org.springframework.boot</groupId>-->
-<!--		<artifactId>spring-boot-devtools</artifactId>-->
-<!--		<scope>runtime</scope>-->
-<!--		<optional>true</optional>-->
-<!--	</dependency>-->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -32,6 +24,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
