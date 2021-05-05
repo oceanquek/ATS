@@ -62,8 +62,8 @@ public class CountryAppTest {
     @Order(6)
     void testCountry_deleteCountry() {
 
-        airportService.deleteAirport(airportService.getAirportByCode(airportDallas));
-        assertNull(airportService.getAirportByCode(airportDallas));
+        countryService.deleteCountry(countryService.getCountryByName(countryDallas));
+        assertNull(countryService.getCountryByName(countryDallas));
     }
 
 }
