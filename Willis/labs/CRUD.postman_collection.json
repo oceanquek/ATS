@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "21729f06-231c-409b-ab0a-174544ff2034",
+		"name": "CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"dateOfFlight\": \"12-7-2021\",\n        \"departure\": \"Japan\",\n        \"destination\": \"Singapore\",\n        \"seatNo\": \"e7\",\n        \"customerName\": \"mr tan\",\n        \"costofFlight\": 200.0\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ats/api/bookings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ats",
+						"api",
+						"bookings"
+					]
+				},
+				"description": "Create new Post"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all bookings",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Way of Life\",\n    \"description\": \"Mr Tan\",\n    \"price\": 40.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ats/api/airports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ats",
+						"api",
+						"airports"
+					]
+				},
+				"description": "Get Products"
+			},
+			"response": []
+		},
+		{
+			"name": "Get booking by booking id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Way of Life\",\n    \"description\": \"Mr Tan\",\n    \"price\": 40.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ats/api/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ats",
+						"api",
+						"products",
+						"1"
+					]
+				},
+				"description": "get product by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Booking based of bookingid",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bookingId\": 1,\n    \"dateOfFlight\": \"12-8-2021\",\n    \"departure\": \"Japan\",\n    \"destination\": \"Singapore\",\n    \"seatNo\": \"e7\",\n    \"customerName\": \"mr tan\",\n    \"costofFlight\": 200.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ats/api/bookings/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ats",
+						"api",
+						"bookings",
+						"1"
+					]
+				},
+				"description": "updated product"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Booking by bookingid",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Way of Life\",\n    \"description\": \"Mr Tan\",\n    \"price\": 40.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ats/api/products/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ats",
+						"api",
+						"products",
+						"4"
+					]
+				},
+				"description": "Delete product"
+			},
+			"response": []
+		}
+	]
+}
